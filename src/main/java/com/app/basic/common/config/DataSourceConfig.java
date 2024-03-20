@@ -49,9 +49,9 @@ public class DataSourceConfig {
         dataSource.setUsername(USER_NAME);
         dataSource.setPassword(PASSWORD);
 
-		log.info("================= :: Beautyon DB Connection Info  :: =================");
-        log.info(">> Writer JNDI Name : {} ", WRITER_DATASOURCE_URL);
-    	log.info("======================================================================");
+		log.info("================= :: DB Connection Info  :: =================");
+        log.info(">> Writer Name : {} ", WRITER_DATASOURCE_URL);
+    	log.info("=============================================================");
 
         return dataSource;
     }
@@ -65,9 +65,9 @@ public class DataSourceConfig {
         dataSource.setUsername(USER_NAME);
         dataSource.setPassword(PASSWORD);
 
-        log.info("================= :: Beautyon DB Connection Info  :: =================");
-        log.info(">> Reader JNDI Name : {} ", READER_DATASOURCE_URL);
-    	log.info("======================================================================");
+        log.info("================= :: DB Connection Info  :: =================");
+        log.info(">> Reader Name : {} ", READER_DATASOURCE_URL);
+    	log.info("=============================================================");
 
         return dataSource;
     }

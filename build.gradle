@@ -33,6 +33,12 @@ dependencies {
 	// log4jdbc
 	implementation group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 
+	// Redis
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
+	// Embedded Redis
+	implementation group: 'com.github.kstyrc', name: 'embedded-redis', version: '0.6'
+
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
