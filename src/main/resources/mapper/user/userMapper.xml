@@ -13,4 +13,20 @@
 		]]>
 	</select>
 
+	<insert id="saveUser" parameterType="com.app.basic.domain.user.dto.UserDto">
+		<![CDATA[
+			INSERT INTO USER_INFO
+			(
+			  USER_ID
+			, USER_PASSWORD
+			, USER_NAME
+			) VALUES
+		  	(
+			  #{userId}
+			, #{userPassword}
+			, #{userName}
+			)
+		]]>
+	</insert>
+
 </mapper>

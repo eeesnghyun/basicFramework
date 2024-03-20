@@ -12,6 +12,8 @@
 <body>
     <main class="form-signin w-100 m-auto">
         <form method="post" action="/authenticate">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
             <h1 class="h3 mb-3 fw-normal text-center">로그인</h1>
 
             <div class="form-floating">
@@ -24,6 +26,10 @@
             </div>
 
             <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+
+            <p class="mt-5 mb-3 text-center">
+              <a href="/join">회원가입</a>
+            </p>
         </form>
     </main>
 </body>

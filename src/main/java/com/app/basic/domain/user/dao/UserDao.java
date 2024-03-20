@@ -6,5 +6,8 @@ public interface UserDao {
 
     public UserDto loadUserAuth(String userName);
 
+    public void saveUser(UserDto userDto) throws Exception;
+
+
 
 }
