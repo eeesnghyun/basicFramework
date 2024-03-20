@@ -36,8 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("======================================");
 
         http.authorizeRequests()
-			.antMatchers("/login"          //로그인
-				, "/join", "/user/save"  //회원가입
+			.antMatchers(
+                "/login", "/join", "/user/save", "/",
+                "/getMenuList"
 			).permitAll()
 
 			//이외에 인증된 사용자만 접근 가능

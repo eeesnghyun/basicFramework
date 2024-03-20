@@ -1,12 +1,12 @@
 package com.app.basic.domain.home.dto;
 
+import java.io.Serializable;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class MenuDto {
+public class MenuDto implements Serializable {
 
     private int menuSeq;
     private String menuName;
+
 }

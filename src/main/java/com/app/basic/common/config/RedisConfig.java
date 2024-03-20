@@ -29,7 +29,7 @@ public class RedisConfig {
     private int port;
 
     // 캐시 만료 시간
-    public static final int DEFAULT_EXPIRE_SEC = 60;
+    public static final int DEFAULT_EXPIRE_SEC = 3600;
 
     @Bean
     public LettuceConnectionFactory lettuceConnectionFactory() {
@@ -50,15 +50,17 @@ public class RedisConfig {
     }
 
     @Bean
-    public CacheManager homeCacheManager(RedisConnectionFactory redisConnectionFactory) {
-        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+        RedisCacheConfiguration menuConfig = RedisCacheConfiguration.defaultCacheConfig()
             .entryTtl(Duration.ofSeconds(DEFAULT_EXPIRE_SEC))
             .disableCachingNullValues()
+            .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
             .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(
                 new GenericJackson2JsonRedisSerializer()));
 
-        return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(
-                redisConnectionFactory)
-            .cacheDefaults(redisCacheConfiguration).build();
+        return RedisCacheManager.RedisCacheManagerBuilder
+            .fromConnectionFactory(redisConnectionFactory)
+            .withCacheConfiguration("Menu", menuConfig).build();
+//            .cacheDefaults(redisCacheConfiguration).build();
     }
 }
