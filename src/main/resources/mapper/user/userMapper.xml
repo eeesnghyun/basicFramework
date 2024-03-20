@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.basic.domain.user.dao.UserDao">
+
+	<select id="loadUserAuth" parameterType="String" resultType="com.app.basic.domain.user.dto.UserDto">
+		<![CDATA[
+			SELECT
+				   USER_ID
+				 , USER_PASSWORD
+			     , USER_NAME
+			  FROM USER_INFO
+			 WHERE USER_ID = #{userName}
+		]]>
+	</select>
+
+</mapper>
