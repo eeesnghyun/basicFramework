@@ -1,10 +1,10 @@
 package com.app.basic.domain.home.controller;
 
+import com.app.basic.common.entity.MsgEntity;
+import com.app.basic.common.entity.StatusEnum;
 import com.app.basic.domain.home.dto.MenuDto;
 import com.app.basic.domain.home.service.HomeService;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,14 +33,12 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/getMenuList", method = {RequestMethod.POST})
-    public @ResponseBody Map<String, Object> getMenuList() {
-        Map<String, Object> resultMap = new HashMap<>();
-
+    public @ResponseBody MsgEntity getMenuList() {
         List<MenuDto> menuList = homeService.getMenuList();
 
-        resultMap.put("result", menuList);
-
-        return resultMap;
+        return MsgEntity.builder()
+                    .message(StatusEnum.OK)
+                    .result(menuList).build();
     }
 
 
