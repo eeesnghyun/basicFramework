@@ -40,6 +40,8 @@
             .always(function() {
             });
         }
+
+        getMenuList();
     </script>
 </body>
 </html>
