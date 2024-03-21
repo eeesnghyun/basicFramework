@@ -19,22 +19,6 @@ public class HomeController {
 
     private final HomeService homeService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home() {
-        return "index";
-    }
-
-    @RequestMapping(value = "/login")
-    public String login() {
-        return "login/index";
-    }
-
-    @RequestMapping(value = "/join", method = RequestMethod.GET)
-    public String join() {
-        return "join/index";
-    }
-
-
     @RequestMapping(value = "/getMenuList", method = {RequestMethod.POST})
     public @ResponseBody MsgEntity getMenuList() {
         log.info(":: 메뉴 조회 ::");

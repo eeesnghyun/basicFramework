@@ -7,5 +7,4 @@ public interface HomeService {
 
     public List<MenuDto> getMenuList();
 
-
 }
