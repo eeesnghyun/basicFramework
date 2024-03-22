@@ -23,4 +23,10 @@ public class HomeServiceImpl implements HomeService {
         return homeDao.getMenuList();
     }
 
+    @Cacheable(value = "message", key = "#menuSeq", cacheManager = "cacheManager")
+    @Override
+    public MenuDto getMenuInfo(int menuSeq) {
+        return homeDao.getMenuInfo(menuSeq);
+    }
+
 }

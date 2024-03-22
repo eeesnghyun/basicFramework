@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 			.antMatchers(
                 "/login", "/join", "/user/save", "/",
-                "/getMenuList"
+                "/getMenuList", "/getMenuInfo"
 			).permitAll()
 
 			//이외에 인증된 사용자만 접근 가능

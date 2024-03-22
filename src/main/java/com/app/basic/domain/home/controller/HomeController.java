@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
@@ -28,5 +29,16 @@ public class HomeController {
         return MsgEntity.builder()
                     .message(StatusEnum.OK)
                     .result(menuList).build();
+    }
+
+    @RequestMapping(value = "/getMenuInfo", method = {RequestMethod.GET})
+    public @ResponseBody MsgEntity getMenuInfo(@RequestParam int menuSeq) {
+        log.info(":: 메뉴 조회 ::");
+
+        MenuDto menuInfo = homeService.getMenuInfo(menuSeq);
+
+        return MsgEntity.builder()
+                    .message(StatusEnum.OK)
+                    .result(menuInfo).build();
     }
 }

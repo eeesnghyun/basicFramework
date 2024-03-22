@@ -7,5 +7,5 @@ public interface HomeDao {
 
     public List<MenuDto> getMenuList();
 
-
+    public MenuDto getMenuInfo(int menuSeq);
 }

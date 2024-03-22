@@ -11,4 +11,14 @@
 		]]>
 	</select>
 
+	<select id="getMenuInfo" parameterType="int" resultType="com.app.basic.domain.home.dto.MenuDto">
+		<![CDATA[
+			SELECT
+				   MENU_SEQ
+				 , MENU_NAME
+			  FROM MENU_INFO
+		     WHERE MENU_SEQ = #{menuSeq}
+		]]>
+	</select>
+
 </mapper>
