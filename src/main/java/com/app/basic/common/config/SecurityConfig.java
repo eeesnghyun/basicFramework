@@ -35,14 +35,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         log.info(">> Run on Spring security");
         log.info("======================================");
 
-        http.authorizeRequests()
-			.antMatchers(
-                "/login", "/join", "/user/save", "/",
-                "/getMenuList", "/getMenuInfo"
-			).permitAll()
+//        http.authorizeRequests()
+//			.antMatchers(
+//                "/login", "/join", "/user/save", "/",
+//			).permitAll()
+//			.anyRequest().authenticated();  //이외에 인증된 사용자만 접근 가능
 
-			//이외에 인증된 사용자만 접근 가능
-			.anyRequest().authenticated();
+        http.csrf().disable();
+        http.authorizeRequests()
+			.anyRequest().permitAll();
 
         //로그인 설정
         http.formLogin()
