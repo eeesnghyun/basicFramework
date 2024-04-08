@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @CacheConfig(cacheNames = "menu")
@@ -17,16 +18,22 @@ public class HomeServiceImpl implements HomeService {
 
     private final HomeDao homeDao;
 
-    @Cacheable(key = "'all'", cacheManager = "cacheManager")
     @Override
+    @Transactional(readOnly = true)
+    @Cacheable(key = "'all'", cacheManager = "cacheManager")
     public List<MenuDto> getMenuList() {
         return homeDao.getMenuList();
     }
 
-    @Cacheable(value = "message", key = "#menuSeq", cacheManager = "cacheManager")
     @Override
+    @Cacheable(value = "message", key = "#menuSeq", cacheManager = "cacheManager")
     public MenuDto getMenuInfo(int menuSeq) {
         return homeDao.getMenuInfo(menuSeq);
+    }
+
+    @Override
+    public void saveMenuInfo(MenuDto menuDto) throws Exception {
+        homeDao.saveMenuInfo(menuDto);
     }
 
 }

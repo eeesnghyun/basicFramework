@@ -21,4 +21,14 @@
 		]]>
 	</select>
 
+	<insert id="saveMenuInfo" parameterType="com.app.basic.domain.home.dto.MenuDto">
+		<![CDATA[
+			INSERT INTO MENU_INFO (
+				MENU_NAME
+			) VALUES (
+			    #{menuName}
+			)
+		]]>
+	</insert>
+
 </mapper>

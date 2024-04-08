@@ -9,4 +9,5 @@ public interface HomeService {
 
     public MenuDto getMenuInfo(int menuSeq);
 
+    public void saveMenuInfo(MenuDto menuDto) throws Exception;
 }

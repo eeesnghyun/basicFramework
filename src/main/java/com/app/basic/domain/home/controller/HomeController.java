@@ -8,6 +8,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,8 +28,8 @@ public class HomeController {
         List<MenuDto> menuList = homeService.getMenuList();
 
         return MsgEntity.builder()
-                    .message(StatusEnum.OK)
-                    .result(menuList).build();
+            .message(StatusEnum.OK)
+            .result(menuList).build();
     }
 
     @RequestMapping(value = "/getMenuInfo", method = {RequestMethod.GET})
@@ -38,7 +39,16 @@ public class HomeController {
         MenuDto menuInfo = homeService.getMenuInfo(menuSeq);
 
         return MsgEntity.builder()
-                    .message(StatusEnum.OK)
-                    .result(menuInfo).build();
+            .message(StatusEnum.OK)
+            .result(menuInfo).build();
+    }
+
+    @RequestMapping(value = "/saveMenuInfo", method = {RequestMethod.POST})
+    public @ResponseBody MsgEntity saveMenuInfo(@RequestBody MenuDto menuDto) throws Exception {
+        homeService.saveMenuInfo(menuDto);
+
+        return MsgEntity.builder()
+            .message(StatusEnum.OK)
+            .result(menuDto).build();
     }
 }
